@@ -23,7 +23,7 @@ function LoginPage() {
       console.log("Login with: ", username, password);
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/auth/login",
+          "http://cloudcomputingpipeline-boot-app:8080/api/auth/login",
           {
             username: username,
             password: password,
