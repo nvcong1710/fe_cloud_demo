@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcomputingfe-nextjs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudcomputingfe-nextjs-app
+  template:
+    metadata:
+      labels:
+        app: cloudcomputingfe-nextjs-app
+    spec:
+      containers:
+      - name: nextjs-app
+        image: webclouddemo.azurecr.io/cloudcomputingfe_pipeline-nextjs-app:latest
+        ports:
+          - containerPort: 3000
+        env:
+          - name: REACT_APP_BACKEND_URL
+            value: "http://cloudcomputingpipeline-boot-app:8080"  # Point to your backend service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcomputingfe-nextjs-app
+spec:
+  selector:
+    app: cloudcomputingfe-nextjs-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
