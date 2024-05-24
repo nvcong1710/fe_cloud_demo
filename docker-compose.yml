@@ -1,9 +1,7 @@
 version: '3'
 services:
   nextjs-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: nextjsfe:latest
     container_name: cloudcomputing_fe
     ports:
