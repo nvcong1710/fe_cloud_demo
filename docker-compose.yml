@@ -2,7 +2,6 @@ version: '3'
 services:
   nextjs-app:
     build: .
-    image: nextjsfe:latest
-    container_name: cloudcomputing_fe
+    hostname: fe_cloud_demo
     ports:
       - "3000:3000"
