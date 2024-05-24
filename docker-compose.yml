@@ -5,6 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: nextjsfe:latest
-    container_name: nextjsfevideostream
+    container_name: cloudcomputing_fe
     ports:
       - "3000:3000"
