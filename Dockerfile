@@ -28,5 +28,4 @@ COPY --from=build /app/dist /app/dist
 EXPOSE 3000
 
 # Command to serve the application
-CMD ["npx", "serve", "-s", "/app/dist", "-l", "3000"]
-
+CMD ["npx", "vite", "preview", "--port", "3000", "--host", "0.0.0.0", "--config", "/app/dist/vite.config.js"]
