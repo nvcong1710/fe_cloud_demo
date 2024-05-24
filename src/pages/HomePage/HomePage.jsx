@@ -8,9 +8,8 @@ function HomePage() {
   useEffect(() => {
     const fetchAuthors = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8080/api/tacgia/getntacgia/10"
-        );
+        const response = await fetch("http://localhost:8080/api/tacgia/getntacgia/10");
+        
         if (!response.ok) {
           throw new Error("Failed to fetch authors");
         }
