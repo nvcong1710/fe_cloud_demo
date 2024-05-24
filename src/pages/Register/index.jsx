@@ -19,7 +19,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/register",
+        "http://cloudcomputingpipeline-boot-app:8080/api/auth/register",
         formData
       );
 
