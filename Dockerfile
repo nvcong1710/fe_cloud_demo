@@ -28,4 +28,5 @@ COPY --from=build /app/dist /app/dist
 EXPOSE 3000
 
 # Command to serve the application
-CMD ["node", "/app/dist/server.js"]
+CMD ["npx", "serve", "-s", "/app/dist", "-l", "3000"]
+
