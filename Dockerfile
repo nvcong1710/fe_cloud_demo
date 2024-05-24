@@ -1,5 +1,5 @@
-# Sử dụng một hình ảnh Node.js cụ thể là LTS
-FROM node:18-alpine
+# Stage 1: Build the React app
+FROM node:18-alpine as build
 # Tạo thư mục làm việc trong container
 WORKDIR /app
 
@@ -15,8 +15,17 @@ COPY . .
 # Chạy npm run build để build ứng dụng Next.js
 RUN npm run build
 
+# Stage 2: Serve the built app using Node.js
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy the built app from the previous stage
+COPY --from=build /app/dist /app/dist
+
 # Mở cổng 3000, nơi mà ứng dụng của Next.js thường chạy
 EXPOSE 3000
 
-# Chạy ứng dụng khi container được khởi chạy
-CMD ["npm", "start"]
+# Command to serve the application
+CMD ["node", "/app/dist/server.js"]
